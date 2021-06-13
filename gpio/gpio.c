@@ -11,5 +11,5 @@ void GPIO_Setup(void)
 void GPIO_TogglePin(void)
 { 
     PORTB ^= 1 << PINB7;
-    _delay_ms(1000);
+    _delay_ms(100);
 }
