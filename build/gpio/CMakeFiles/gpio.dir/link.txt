@@ -1,2 +1,0 @@
-/opt/homebrew/bin/avr-ar qc libgpio.a CMakeFiles/gpio.dir/gpio.c.obj
-/opt/homebrew/bin/avr-ranlib libgpio.a
