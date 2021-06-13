@@ -65,10 +65,12 @@ add_compile_options(
 )
 
 # Libraries
-add_subdirectory (gpio)
+add_subdirectory(gpio)
+add_subdirectory(serial)
+add_subdirectory(interrupt)
 
 # Executable
-add_subdirectory (src)
+add_subdirectory(src)
 
 # Clean extra files
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PRODUCT_NAME}")
