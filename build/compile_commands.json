@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/Users/andersn/Fritid/Kabeltester/build/gpio",
+  "command": "/usr/local/homebrew/opt/avr-gcc@11/bin/avr-gcc -DBAUD=9600 -DF_CPU=8000000UL -I/Users/andersn/Fritid/Kabeltester/gpio/../include -g -mmcu=atmega2560 -std=gnu99 -Os -Wall -Wno-main -Wundef -pedantic -Wstrict-prototypes -Werror -Wfatal-errors -Wl,--relax,--gc-sections -g -gdwarf-2 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -fno-split-wide-types -fno-tree-scev-cprop -o CMakeFiles/gpio.dir/gpio.c.obj -c /Users/andersn/Fritid/Kabeltester/gpio/gpio.c",
+  "file": "/Users/andersn/Fritid/Kabeltester/gpio/gpio.c"
+},
+{
+  "directory": "/Users/andersn/Fritid/Kabeltester/build/src",
+  "command": "/usr/local/homebrew/opt/avr-gcc@11/bin/avr-gcc -DBAUD=9600 -DF_CPU=8000000UL -I/Users/andersn/Fritid/Kabeltester/gpio/../include -g -mmcu=atmega2560 -std=gnu99 -Os -Wall -Wno-main -Wundef -pedantic -Wstrict-prototypes -Werror -Wfatal-errors -Wl,--relax,--gc-sections -g -gdwarf-2 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -fno-split-wide-types -fno-tree-scev-cprop -o CMakeFiles/kabeltester_fw.dir/main.c.obj -c /Users/andersn/Fritid/Kabeltester/src/main.c",
+  "file": "/Users/andersn/Fritid/Kabeltester/src/main.c"
+}
+]
