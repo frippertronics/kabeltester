@@ -1,0 +1,152 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "gpio",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "gpio",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "Kabeltester",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "eeprom::@145eef247bfb46b6828c",
+					"jsonFile" : "target-eeprom-Debug-122e1a5e8b2ebeb9a70a.json",
+					"name" : "eeprom",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "fuses::@145eef247bfb46b6828c",
+					"jsonFile" : "target-fuses-Debug-d2b70b039deed4e05a8d.json",
+					"name" : "fuses",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gpio::@73463c091809559bc257",
+					"jsonFile" : "target-gpio-Debug-eef6823ad3a7475a7bc3.json",
+					"name" : "gpio",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "hex::@145eef247bfb46b6828c",
+					"jsonFile" : "target-hex-Debug-7d15aefa3da7fb9fbc95.json",
+					"name" : "hex",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "kabeltester_fw::@145eef247bfb46b6828c",
+					"jsonFile" : "target-kabeltester_fw-Debug-ad6822b29909c4da9098.json",
+					"name" : "kabeltester_fw",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "strip::@145eef247bfb46b6828c",
+					"jsonFile" : "target-strip-Debug-538cd0b4f2f1062acfa0.json",
+					"name" : "strip",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "upload::@145eef247bfb46b6828c",
+					"jsonFile" : "target-upload-Debug-4473a5a1e019243355ae.json",
+					"name" : "upload",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "upload_eeprom::@145eef247bfb46b6828c",
+					"jsonFile" : "target-upload_eeprom-Debug-593055554aaa5eeb8d9b.json",
+					"name" : "upload_eeprom",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/andersn/Fritid/Kabeltester/build",
+		"source" : "/Users/andersn/Fritid/Kabeltester"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}
