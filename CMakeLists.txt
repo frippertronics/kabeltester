@@ -63,8 +63,6 @@ add_compile_options(
     -fno-split-wide-types
     -fno-tree-scev-cprop
 )
-#file(GLOB SRC_FILES "src/*.c") # Load all files in src folder
-#file(GLOB HEADER_FILES "src/*.h")
 
 # Libraries
 add_subdirectory (gpio)

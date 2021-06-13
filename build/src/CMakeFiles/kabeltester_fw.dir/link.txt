@@ -1,1 +1,0 @@
-/usr/local/homebrew/opt/avr-gcc@11/bin/avr-gcc -g -mmcu=atmega2560 CMakeFiles/kabeltester_fw.dir/main.c.obj -o kabeltester_fw.elf  ../gpio/libgpio.a 
