@@ -1,6 +1,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#include "kabeltester/gpio.h"
+
 void GPIO_Setup(void)
 {
     DDRB |= 1 << PINB7;

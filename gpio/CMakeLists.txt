@@ -6,7 +6,7 @@
 set(LIBRARY_FILENAME gpio)
 
 # Include the header file(s) for the library
-set (headers ${CMAKE_SOURCE_DIR}/include/gpio.h)
+set (headers ${CMAKE_SOURCE_DIR}/include/kabeltester/gpio.h)
 
 # Create a library for the non-executable library
 add_library(${LIBRARY_FILENAME} gpio.c ${headers})
