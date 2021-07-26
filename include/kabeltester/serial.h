@@ -5,6 +5,6 @@
 
 void SERIAL_PrintLetter(void);
 void SERIAL_Setup(void);
-void SERIAL_SetMessage(void);
+void SERIAL_SendMessage(char* pString, uint8_t string_len);
 
 #endif //SERIAL_H
