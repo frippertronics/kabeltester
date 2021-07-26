@@ -3,7 +3,6 @@
 
 #include "kabeltester/serial.h"
 
-
 #define MAX_STRING_LENGTH (30)
 
 static char s_SerialBuffer[255] = {0U};
@@ -33,20 +32,19 @@ inline void SERIAL_PrintLetter(void)
 
 void SERIAL_Setup(void)
 {
-    // enable UDRE interrupt and enable transmit
+    // Enable transmit
     UCSR0B |= (1 << TXEN0);
 
-    // set character data size to 8
+    // Set character data size to 8
     UCSR0C |= (1 << UCSZ00) | (1 << UCSZ01);
 
-    // baud rate 9600
+    // Set baud rate to 9600
     UBRR0 = 103U;
 }
 
-void SERIAL_SetMessage(void)
+void SERIAL_SendMessage(char* pString, uint8_t string_len)
 {
-    char string[] = "Hello world!\n";
-    (void) memcpy(s_SerialBuffer, string, 14);
+    (void) memcpy(s_SerialBuffer, pString, string_len);
     s_SerialBufferIndex = 0U;
     SERIAL_EnableUartInterrupt();
 }

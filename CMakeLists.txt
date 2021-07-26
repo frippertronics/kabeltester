@@ -23,7 +23,7 @@ set(BAUD 9600)
 # The programmer to use, read avrdude manual for list
 set(PROG_TYPE avrisp2)
 # Target device 
-set(TARGET_DEVICE /dev/cu.usbmodem1101)
+set(TARGET_DEVICE /dev/cu.usbmodem1401)
 
 # AVR Fuses, must be in concordance with your hardware and F_CPU
 # http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega328p
