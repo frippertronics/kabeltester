@@ -1,16 +1,16 @@
 #include "kabeltester/gpio.h"
 #include "kabeltester/interrupt.h"
 #include "kabeltester/serial.h"
+#include "kabeltester/tester.h"
 
 #include <util/delay.h>
-
-#define ARRAY_LEN(arr) (sizeof(arr)/sizeof(arr[0]))
 
 void init(void)
 {
     // Modules
     GPIO_Setup();
     SERIAL_Setup();
+    TESTER_Setup();
 
     // Enable interrupts last to avoid funky behaviour
     INT_Setup();
@@ -19,8 +19,8 @@ void init(void)
 int main(void)
 {
     init();
-    char hello_world[] = "Hello world! \n";
-    SERIAL_SendMessage(hello_world, ARRAY_LEN(hello_world));
+    PIN_STATUS_E test_results[NUM_TESTER_INPUT_PINS];
+    TESTER_TestLk37(test_results);
     while(1)
     {
         GPIO_ToggleSanityLED();
