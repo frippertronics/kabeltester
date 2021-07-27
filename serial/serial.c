@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <string.h>
+#include <util/delay.h>
 
 #include "kabeltester/serial.h"
 
@@ -47,4 +48,5 @@ void SERIAL_SendMessage(char* pString, uint8_t string_len)
     (void) memcpy(s_SerialBuffer, pString, string_len);
     s_SerialBufferIndex = 0U;
     SERIAL_EnableUartInterrupt();
+    _delay_ms(50);
 }
