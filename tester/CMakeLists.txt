@@ -3,13 +3,13 @@
 
 # Define the output library name. Use this name when referencing the library
 # in the app and test CMakeLists
-set(LIBRARY_FILENAME gpio)
+set(LIBRARY_FILENAME tester)
 
 # Include the header file(s) for the library
-set (headers ${CMAKE_SOURCE_DIR}/include/kabeltester/gpio.h ${CMAKE_SOURCE_DIR}/include/hardware/gpio_pins.h)
+set (headers ${CMAKE_SOURCE_DIR}/include/kabeltester/tester.h)
 
 # Create a library for the non-executable library
-add_library(${LIBRARY_FILENAME} gpio.c ${headers})
+add_library(${LIBRARY_FILENAME} tester.c ${headers})
 
 # Make sure the compiler can include files for the library in other parts of the project
 target_include_directories (${LIBRARY_FILENAME} PUBLIC ../include)
