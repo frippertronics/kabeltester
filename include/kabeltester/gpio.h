@@ -8,6 +8,9 @@
 #define NUM_MUX_CONTROL_PINS (3)
 #define NUM_MUX_SELECT_PINS (5)
 
+// These enums act as abstraction interfaces for the actual
+// GPIO pins. The interface expects the GPIO interface to 
+// place the I/O pins in the order specified by the enum
 typedef enum 
 {
     PIN_E = 0, PIN_F, PIN_A,
@@ -44,7 +47,7 @@ void GPIO_Setup(void);
 void GPIO_ToggleSanityLED(void);
 uint8_t GPIO_ReadTesterPin(TESTER_PINS_E tester_pin);
 void GPIO_SetMuxSelectPin(MUX_SELECT_E mux_select);
-void GPIO_ClearMuxSelectPin(MUX_SELECT_E mux_control);
+void GPIO_ClearMuxSelectPin(MUX_SELECT_E mux_select);
 void GPIO_SetMuxControlPin(MUX_CONTROL_E mux_control);
 void GPIO_ClearMuxControlPin(MUX_CONTROL_E mux_control);
 
