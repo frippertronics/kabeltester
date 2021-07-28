@@ -8,5 +8,7 @@
 void SERIAL_PrintLetter(void);
 void SERIAL_Setup(void);
 void SERIAL_SendMessage(char* pString, uint8_t string_len);
+void SERIAL_SendMessageWithInteger(char* pString, uint8_t string_len, int integer);
+
 
 #endif //SERIAL_H

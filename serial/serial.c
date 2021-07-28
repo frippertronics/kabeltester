@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <string.h>
 #include <util/delay.h>
+#include <stdlib.h>
 
 #include "kabeltester/serial.h"
 
@@ -49,4 +50,11 @@ void SERIAL_SendMessage(char* pString, uint8_t string_len)
     s_SerialBufferIndex = 0U;
     SERIAL_EnableUartInterrupt();
     _delay_ms(50);
+}
+
+void SERIAL_SendMessageWithInteger(char* pString, uint8_t string_len, int integer)
+{
+    SERIAL_SendMessage(pString, string_len);
+    itoa(integer, pString, 10);
+    SERIAL_SendMessage(pString, string_len);
 }
