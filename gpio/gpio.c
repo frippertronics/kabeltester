@@ -2,6 +2,7 @@
 
 #include "kabeltester/gpio.h"
 #include "hardware/gpio_pins.h"
+#include "kabeltester/serial.h"
 
 typedef enum 
 {
@@ -55,7 +56,7 @@ static void GPIO_InitOutputPins(void)
 
 static uint8_t GPIO_ReadPin(volatile uint8_t* pPort, uint8_t pin)
 {
-    uint8_t value = ((*pPort & (1 << pin) >> pin));
+    uint8_t value = (((*pPort & (1 << pin)) >> pin));
     return(value);
 }
 
@@ -81,7 +82,6 @@ void GPIO_Setup(void)
 
     // Outputs
     GPIO_InitOutputPins();
-
 }
 
 uint8_t GPIO_ReadTesterPin(TESTER_PINS_E tester_pin)
