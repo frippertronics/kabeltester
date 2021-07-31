@@ -5,7 +5,7 @@
 
 #include <util/delay.h>
 
-void init(void)
+static void init(void)
 {
     // Modules
     GPIO_Setup();
@@ -19,7 +19,7 @@ void init(void)
 int main(void)
 {
     init();
-    PIN_STATUS_E test_results[NUM_TESTER_INPUT_PINS];
+    TEST_RESULTS_T test_results[NUM_TESTER_INPUT_PINS];
     TESTER_TestLk37(test_results);
     while(1)
     {
