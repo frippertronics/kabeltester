@@ -2,6 +2,7 @@
     "cmake.configureOnOpen": true,
     "files.associations": {
         "*.scons": "python",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "gpio_pins.h": "c"
     }
 }

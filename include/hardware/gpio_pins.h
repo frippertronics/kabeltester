@@ -86,7 +86,7 @@ static const GPIO_PIN_T TESTER_INPUT_PINS[NUM_TESTER_INPUT_PINS] = {
     {DDR_C_PTR, PIN_C_PTR, PINC2}, // Input 25 (d)
     {DDR_C_PTR, PIN_C_PTR, PINC1}, // Input 26 (j)
     {DDR_C_PTR, PIN_C_PTR, PINC0}, // Input 27 (e)
-
+    
     {DDR_D_PTR, PIN_D_PTR, PIND7}, // Input 28 (f)
 
     {DDR_G_PTR, PIN_G_PTR, PING2}, // Input 29 (m)
@@ -107,7 +107,7 @@ static const GPIO_PIN_T EXTRA_INPUT_PINS[NUM_EXTRA_INPUT_PINS] = {
 };
 
 // OUTPUT PINS
-static const GPIO_PIN_T MUX_SELECT_PINS[NUM_MUX_SELECT_PINS] = {
+static const GPIO_PIN_T MUX_DISABLE_PINS[NUM_MUX_DISABLE_PINS] = {
     {DDR_H_PTR, PORT_H_PTR, PINH6}, // MuxS 1
     {DDR_H_PTR, PORT_H_PTR, PINH5}, // MuxS 2
     {DDR_H_PTR, PORT_H_PTR, PINH4}, // MuxS 3

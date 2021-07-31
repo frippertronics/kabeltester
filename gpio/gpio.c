@@ -4,6 +4,7 @@
 #include "hardware/gpio_pins.h"
 #include "kabeltester/serial.h"
 
+
 typedef enum 
 {
     INPUT = 0,
@@ -40,9 +41,9 @@ static void GPIO_InitInputPins(void)
 static void GPIO_InitOutputPins(void)
 {
     // Mux functionality
-    for(int i = 0; i < NUM_MUX_SELECT_PINS; i++)
+    for(int i = 0; i < NUM_MUX_DISABLE_PINS; i++)
     {
-        GPIO_InitPin(MUX_SELECT_PINS[i].ddr, MUX_SELECT_PINS[i].number, OUTPUT);
+        GPIO_InitPin(MUX_DISABLE_PINS[i].ddr, MUX_DISABLE_PINS[i].number, OUTPUT);
     }
 
     for(int i = 0; i < NUM_MUX_CONTROL_PINS; i++)
@@ -91,16 +92,16 @@ uint8_t GPIO_ReadTesterPin(TESTER_PINS_E tester_pin)
     return(pin_value);
 }
 
-void GPIO_SetMuxSelectPin(MUX_SELECT_E mux_select)
+void GPIO_SetMuxDisablePin(MUX_SELECT_E mux_disable)
 {
-    GPIO_PIN_T pin_info = MUX_SELECT_PINS[mux_select];
+    GPIO_PIN_T pin_info = MUX_DISABLE_PINS[mux_disable];
     GPIO_SetPin(pin_info.port, 
                 pin_info.number);
 }
 
-void GPIO_ClearMuxSelectPin(MUX_SELECT_E mux_select)
+void GPIO_ClearMuxDisablePin(MUX_SELECT_E mux_disable)
 {
-    GPIO_PIN_T pin_info = MUX_SELECT_PINS[mux_select];
+    GPIO_PIN_T pin_info = MUX_DISABLE_PINS[mux_disable];
     GPIO_ClearPin(pin_info.port, 
                   pin_info.number);
 }
