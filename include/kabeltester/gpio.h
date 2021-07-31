@@ -6,7 +6,7 @@
 #define NUM_TESTER_INPUT_PINS (37)
 #define NUM_EXTRA_INPUT_PINS (3)
 #define NUM_MUX_CONTROL_PINS (3)
-#define NUM_MUX_SELECT_PINS (5)
+#define NUM_MUX_DISABLE_PINS (5)
 
 // These enums act as abstraction interfaces for the actual
 // GPIO pins. The interface expects the GPIO interface to 
@@ -25,7 +25,7 @@ typedef enum
     PIN_e, PIN_f, PIN_m,
     PIN_n, PIN_p, PIN_h,
     PIN_r, PIN_s, PIN_k,
-    PIN_z
+    PIN_z,
 } TESTER_PINS_E;
 
 typedef enum 
@@ -46,8 +46,8 @@ typedef enum
 void GPIO_Setup(void);
 void GPIO_ToggleSanityLED(void);
 uint8_t GPIO_ReadTesterPin(TESTER_PINS_E tester_pin);
-void GPIO_SetMuxSelectPin(MUX_SELECT_E mux_select);
-void GPIO_ClearMuxSelectPin(MUX_SELECT_E mux_select);
+void GPIO_SetMuxDisablePin(MUX_SELECT_E mux_disable);
+void GPIO_ClearMuxDisablePin(MUX_SELECT_E mux_disable);
 void GPIO_SetMuxControlPin(MUX_CONTROL_E mux_control);
 void GPIO_ClearMuxControlPin(MUX_CONTROL_E mux_control);
 
