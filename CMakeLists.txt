@@ -69,6 +69,7 @@ add_subdirectory(gpio)
 add_subdirectory(serial)
 add_subdirectory(interrupt)
 add_subdirectory(tester)
+#add_subdirectory(twi)
 
 # Executable
 add_subdirectory(src)
