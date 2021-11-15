@@ -4,7 +4,8 @@
 #include "hardware/gpio_pins.h"
 #include "kabeltester/serial.h"
 
-
+static void GPIO_SetPin(volatile uint8_t* pPort, uint8_t pin);
+static void GPIO_ClearPin(volatile uint8_t* pPort, uint8_t pin);
 typedef enum 
 {
     INPUT = 0,
@@ -49,6 +50,13 @@ static void GPIO_InitOutputPins(void)
     for(int i = 0; i < NUM_MUX_CONTROL_PINS; i++)
     {
         GPIO_InitPin(MUX_CONTROL_PINS[i].ddr, MUX_CONTROL_PINS[i].number, OUTPUT);
+    }
+
+    // TWI interface with pull-ups
+    for(int i = 0; i < NUM_TWI_PINS; i++)
+    {
+        GPIO_InitPin(TWI_PINS[i].ddr, TWI_PINS[i].number, OUTPUT);
+        GPIO_SetPin(TWI_PINS[i].port, TWI_PINS[i].number);
     }
 
     // Blinking LED for sanity check
