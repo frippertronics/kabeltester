@@ -10,6 +10,14 @@ void INT_Setup(void)
 }
 
 // Serial printing
-ISR(USART0_UDRE_vect){
+ISR(USART0_UDRE_vect)
+{
     SERIAL_PrintLetter();
 }
+
+/*
+ISR(TWI_vect)
+{
+    TWI_SendByte();
+}
+*/ 
