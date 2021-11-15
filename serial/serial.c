@@ -36,10 +36,8 @@ void SERIAL_Setup(void)
 {
     // Enable transmit
     UCSR0B |= (1 << TXEN0);
-
     // Set character data size to 8
     UCSR0C |= (1 << UCSZ00) | (1 << UCSZ01);
-
     // Set baud rate to 9600
     UBRR0 = 103U;
 }

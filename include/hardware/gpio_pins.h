@@ -4,6 +4,7 @@
 #include <avr/io.h>
 
 #include "kabeltester/gpio.h"
+#include "kabeltester/twi.h"
 
 #define DDR_A_PTR (&DDRA)
 #define DDR_B_PTR (&DDRB)
@@ -120,5 +121,10 @@ static const GPIO_PIN_T MUX_CONTROL_PINS[NUM_MUX_CONTROL_PINS] = {
     {DDR_E_PTR, PORT_E_PTR, PINE5}, // Mux B
     {DDR_G_PTR, PORT_G_PTR, PING5}, // Mux C
 }; 
+
+static const GPIO_PIN_T TWI_PINS[NUM_TWI_PINS] = {
+    {DDR_D_PTR, PORT_D_PTR, PIND0}, // TWI SCL
+    {DDR_D_PTR, PORT_D_PTR, PIND1}, // TWI SDA
+};
 
 #endif //GPIO_PINS_H

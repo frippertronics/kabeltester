@@ -3,6 +3,7 @@
     "files.associations": {
         "*.scons": "python",
         "gpio.h": "c",
-        "gpio_pins.h": "c"
+        "gpio_pins.h": "c",
+        "serial.h": "c"
     }
 }
