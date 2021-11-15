@@ -19,8 +19,8 @@ static void init(void)
 int main(void)
 {
     init();
-    //TEST_RESULTS_T test_results[NUM_TESTER_INPUT_PINS];
-    //TESTER_TestLk37(test_results);
+    TEST_RESULTS_T test_results[NUM_TESTER_INPUT_PINS];
+    TESTER_TestLk37(test_results);
     
     while(1)
     {
