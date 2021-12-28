@@ -7,5 +7,6 @@
 
 
 void DISPLAY_Setup(void);
+void DISPLAY_test(void);
 
 #endif //DISPLAY_H

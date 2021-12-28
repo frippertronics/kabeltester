@@ -4,6 +4,7 @@
         "*.scons": "python",
         "gpio.h": "c",
         "gpio_pins.h": "c",
-        "serial.h": "c"
+        "serial.h": "c",
+        "i2c.h": "c"
     }
 }

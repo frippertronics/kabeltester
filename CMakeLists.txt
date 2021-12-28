@@ -69,7 +69,7 @@ add_subdirectory(gpio)
 add_subdirectory(serial)
 add_subdirectory(interrupt)
 add_subdirectory(tester)
-add_subdirectory(twi)
+add_subdirectory(i2c)
 add_subdirectory(display)
 
 # Executable

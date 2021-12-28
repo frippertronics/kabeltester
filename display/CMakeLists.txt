@@ -6,7 +6,7 @@
 set(LIBRARY_FILENAME display)
 
 # Include the header file(s) for the library
-set (headers ${CMAKE_SOURCE_DIR}/include/kabeltester/display.h ${CMAKE_SOURCE_DIR}/include/kabeltester/twi.h)
+set (headers ${CMAKE_SOURCE_DIR}/include/kabeltester/display.h ${CMAKE_SOURCE_DIR}/include/kabeltester/i2c.h ${CMAKE_SOURCE_DIR}/include/kabeltester/serial.h)
 
 # Create a library for the non-executable library
 add_library(${LIBRARY_FILENAME} display.c ${headers})
