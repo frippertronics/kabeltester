@@ -5,6 +5,7 @@
 
 #include "kabeltester/gpio.h"
 
+#define NUM_PINS_LK37 (37U)
 #define NUM_SHORT_PINS_TO_STORE (10U)
 
 typedef enum{

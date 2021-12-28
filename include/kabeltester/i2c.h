@@ -55,23 +55,23 @@
  {
      unsigned char ret;
 
-     i2c_init();                             // initialize I2C library
+     I2C_Init();                             // initialize I2C library
 
      // write 0x75 to EEPROM address 5 (Byte Write) 
-     i2c_start_wait(Dev24C02+I2C_WRITE);     // set device address and write mode
-     i2c_write(0x05);                        // write address = 5
-     i2c_write(0x75);                        // write value 0x75 to EEPROM
-     i2c_stop();                             // set stop conditon = release bus
+     I2C_StartWait(Dev24C02+I2C_WRITE);     // set device address and write mode
+     I2C_Write(0x05);                        // write address = 5
+     I2C_Write(0x75);                        // write value 0x75 to EEPROM
+     I2C_Stop();                             // set stop conditon = release bus
 
 
      // read previously written value back from EEPROM address 5 
-     i2c_start_wait(Dev24C02+I2C_WRITE);     // set device address and write mode
+     I2C_StartWait(Dev24C02+I2C_WRITE);     // set device address and write mode
 
-     i2c_write(0x05);                        // write address = 5
-     i2c_rep_start(Dev24C02+I2C_READ);       // set device address and read mode
+     I2C_Write(0x05);                        // write address = 5
+     I2C_RepStart(Dev24C02+I2C_READ);       // set device address and read mode
 
-     ret = i2c_readNak();                    // read one byte from EEPROM
-     i2c_stop();
+     ret = I2C_ReadNak();                    // read one byte from EEPROM
+     I2C_Stop();
 
      for(;;);
  }
@@ -88,10 +88,10 @@
 
 #include <avr/io.h>
 
-/** defines the data direction (reading from I2C device) in i2c_start(),i2c_rep_start() */
+/** defines the data direction (reading from I2C device) in I2C_Start(),I2C_RepStart() */
 #define I2C_READ    1
 
-/** defines the data direction (writing to I2C device) in i2c_start(),i2c_rep_start() */
+/** defines the data direction (writing to I2C device) in I2C_Start(),I2C_RepStart() */
 #define I2C_WRITE   0
 
 #define NUM_I2C_PINS (2U)
@@ -100,14 +100,14 @@
  @brief initialize the I2C master interace. Need to be called only once 
  @return none
  */
-extern void i2c_init(void);
+extern void I2C_Init(void);
 
 
 /** 
  @brief Terminates the data transfer and releases the I2C bus 
  @return none
  */
-extern void i2c_stop(void);
+extern void I2C_Stop(void);
 
 
 /** 
@@ -117,7 +117,7 @@ extern void i2c_stop(void);
  @retval   0   device accessible 
  @retval   1   failed to access device 
  */
-extern unsigned char i2c_start(unsigned char addr);
+extern unsigned char I2C_Start(unsigned char addr);
 
 
 /**
@@ -127,7 +127,7 @@ extern unsigned char i2c_start(unsigned char addr);
  @retval  0 device accessible
  @retval  1 failed to access device
  */
-extern unsigned char i2c_rep_start(unsigned char addr);
+extern unsigned char I2C_RepStart(unsigned char addr);
 
 
 /**
@@ -137,7 +137,7 @@ extern unsigned char i2c_rep_start(unsigned char addr);
  @param    addr address and transfer direction of I2C device
  @return   none
  */
-extern void i2c_start_wait(unsigned char addr);
+extern void I2C_StartWait(unsigned char addr);
 
  
 /**
@@ -146,32 +146,32 @@ extern void i2c_start_wait(unsigned char addr);
  @retval   0 write successful
  @retval   1 write failed
  */
-extern unsigned char i2c_write(unsigned char data);
+extern unsigned char I2C_Write(unsigned char data);
 
 
 /**
  @brief    read one byte from the I2C device, request more data from device 
  @return   byte read from I2C device
  */
-extern unsigned char i2c_readAck(void);
+extern unsigned char I2C_ReadAck(void);
 
 /**
  @brief    read one byte from the I2C device, read is followed by a stop condition 
  @return   byte read from I2C device
  */
-extern unsigned char i2c_readNak(void);
+extern unsigned char I2C_ReadNak(void);
 
 /** 
  @brief    read one byte from the I2C device
  
- Implemented as a macro, which calls either @ref i2c_readAck or @ref i2c_readNak
+ Implemented as a macro, which calls either @ref I2C_ReadAck or @ref I2C_ReadNak
  
  @param    ack 1 send ack, request more data from device<br>
                0 send nak, read is followed by a stop condition 
  @return   byte read from I2C device
  */
-extern unsigned char i2c_read(unsigned char ack);
-#define i2c_read(ack)  (ack) ? i2c_readAck() : i2c_readNak(); 
+extern unsigned char I2C_read(unsigned char ack);
+#define I2C_read(ack)  (ack) ? I2C_ReadAck() : I2C_ReadNak(); 
 
 
 
