@@ -23,11 +23,11 @@ int main(void)
     init();
     DISPLAY_PrintWelcomeMessage();
     TEST_RESULTS_T test_results[NUM_PINS_LK37];
-    (void) TESTER_TestLk37(test_results);
+    bool cableHasErrors = TESTER_TestLk37(test_results);
 
     while(1)
     {
+        TESTER_DisplayTestResults(cableHasErrors, test_results);
         GPIO_ToggleSanityLED();
-        _delay_ms(1000);
     }
 }

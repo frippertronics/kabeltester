@@ -87,7 +87,7 @@ static void TESTER_CheckPin(TESTER_PINS_E pin_to_check, TEST_RESULTS_T* pin_test
     }
 }
 
-static void TESTER_PrintTestResults(TEST_RESULTS_T* test_results_array)
+static void TESTER_PrintFaults(TEST_RESULTS_T* test_results_array)
 {
     uint8_t openPinCount = 0U;
     uint8_t shortPinCount = 0U;
@@ -187,20 +187,26 @@ bool TESTER_TestLk37(TEST_RESULTS_T* test_results)
     {
         error |= (test_results[i].pin_status != OK);
     }
-    if(error)
+    if (error)
     {
         char message[] = "Cable is broken";
         SERIAL_SendMessage(message, ARRAY_LEN(message));
         DISPLAY_PrintMessage(message, 2, 2);
-        _delay_ms(2000);
-        TESTER_PrintTestResults(test_results);
     }
     else
     {
         char message[] = "Cable is OK!";
         SERIAL_SendMessage(message, ARRAY_LEN(message));
-        DISPLAY_PrintMessage(message, 2, 4);
     }
-
+    _delay_ms(2000);
     return(error);
+}
+
+void TESTER_DisplayTestResults(bool cableHasErrors, TEST_RESULTS_T* testResultArray)
+{
+    DISPLAY_Clear();
+    if(cableHasErrors)
+    {
+        TESTER_PrintFaults(testResultArray);
+    }
 }
