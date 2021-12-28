@@ -1,10 +1,11 @@
-#include "kabeltester/tester.h"
-#include "kabeltester/gpio.h"
-#include "kabeltester/serial.h"
-
 #include <util/delay.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "kabeltester/tester.h"
+#include "kabeltester/gpio.h"
+#include "kabeltester/serial.h"
+#include "kabeltester/display.h"
 
 #define NUM_PINS_PER_MUX (8)
 
@@ -75,6 +76,7 @@ static void TESTER_CheckPin(TESTER_PINS_E pin_to_check, TEST_RESULTS_T* pin_test
         }
         else if (pin == pin_to_check)
         {
+            // Don't set the result as it is OPEN by default
             char message[] = "\n\r OPEN";
             SERIAL_SendMessage(message, ARRAY_LEN(message)); 
         }
@@ -82,6 +84,52 @@ static void TESTER_CheckPin(TESTER_PINS_E pin_to_check, TEST_RESULTS_T* pin_test
         {
             // Do nothing. This is the expected response for all inactive pins.
         }
+    }
+}
+
+static void TESTER_PrintTestResults(TEST_RESULTS_T* test_results_array)
+{
+    uint8_t openPinCount = 0U;
+    uint8_t shortPinCount = 0U;
+    PIN_STATUS_E openPins[NUM_PINS_LK37] = {0U};
+    PIN_STATUS_E shortPins[NUM_PINS_LK37] = {0U};
+
+    // Identify all problems
+    for(int i = 0; i < NUM_PINS_LK37; i++)
+    {
+        PIN_STATUS_E pin_status = test_results_array[i].pin_status;
+
+        switch(pin_status)
+        {
+            case OPEN:
+                openPins[openPinCount] = i;
+                openPinCount++;
+                break;
+            case SHORTED:
+            case OK_BUT_SHORTED:
+                shortPins[shortPinCount] = i;
+                shortPinCount++;
+                break;
+            default:
+                // Pin is OK
+                break;
+        }   
+    }
+
+    // Print results
+    if (shortPinCount != 0U)
+    {
+        DISPLAY_Clear();
+        DISPLAY_PrintMessage("Shorts:", 0, 0);
+        DISPLAY_PrintIntegerArray(shortPins, shortPinCount, 1);
+        _delay_ms(5000U);
+    }
+    if (openPinCount != 0U)
+    {
+        DISPLAY_Clear();
+        DISPLAY_PrintMessage("Open:", 0, 0);
+        DISPLAY_PrintIntegerArray(openPins, openPinCount, 1);
+        _delay_ms(5000U);
     }
 }
 
@@ -107,8 +155,7 @@ bool TESTER_TestLk37(TEST_RESULTS_T* test_results)
     bool error = false;
     uint8_t current_pin = PIN_E;
 
-    char message[] = "Testing LK37 \n";
-    SERIAL_SendMessage(message, ARRAY_LEN(message));
+    DISPLAY_PrintMessage("Testing LK-37", 0U, 3U);
 
     // Reset all control pins and disable all muxes to ensure clean 
     TESTER_Setup();
@@ -142,13 +189,17 @@ bool TESTER_TestLk37(TEST_RESULTS_T* test_results)
     }
     if(error)
     {
-        char message[] = "\n\r Cable is broken \n";
+        char message[] = "Cable is broken";
         SERIAL_SendMessage(message, ARRAY_LEN(message));
+        DISPLAY_PrintMessage(message, 2, 2);
+        _delay_ms(2000);
+        TESTER_PrintTestResults(test_results);
     }
     else
     {
-        char message[] = "\n\r Cable is OK \n";
+        char message[] = "Cable is OK!";
         SERIAL_SendMessage(message, ARRAY_LEN(message));
+        DISPLAY_PrintMessage(message, 2, 4);
     }
 
     return(error);

@@ -7,6 +7,8 @@
 
 #define MAX_STRING_LENGTH (30)
 
+#define SERIAL (1U)
+
 static char s_SerialBuffer[255] = {0U};
 static volatile uint8_t s_SerialBufferIndex = 0U;
 
@@ -44,6 +46,9 @@ void SERIAL_Setup(void)
 
 void SERIAL_SendMessage(char* pString, uint8_t string_len)
 {
+#ifndef SERIAL
+    return;
+#endif
     (void) memcpy(s_SerialBuffer, pString, string_len);
     s_SerialBufferIndex = 0U;
     SERIAL_EnableUartInterrupt();
@@ -52,6 +57,9 @@ void SERIAL_SendMessage(char* pString, uint8_t string_len)
 
 void SERIAL_SendMessageWithInteger(char* pString, uint8_t string_len, int integer)
 {
+#ifndef SERIAL
+    return;
+#endif
     SERIAL_SendMessage(pString, string_len);
     itoa(integer, pString, 10);
     SERIAL_SendMessage(pString, string_len);

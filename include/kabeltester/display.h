@@ -3,10 +3,10 @@
 
 #include <stdbool.h>
 
-#define NUM_SHORT_PINS_TO_STORE (10U)
-
-
 void DISPLAY_Setup(void);
-void DISPLAY_test(void);
+void DISPLAY_Clear(void);
+void DISPLAY_PrintMessage(char* message, uint8_t line, uint8_t offset);
+void DISPLAY_PrintWelcomeMessage(void);
+void DISPLAY_PrintIntegerArray(uint8_t* integerArray, uint8_t numElements, uint8_t line);
 
 #endif //DISPLAY_H

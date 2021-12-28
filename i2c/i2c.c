@@ -24,20 +24,20 @@
 /*************************************************************************
  Initialization of the I2C bus interface. Need to be called only once
 *************************************************************************/
-void i2c_init(void)
+void I2C_Init(void)
 {
   /* initialize TWI clock: 100 kHz clock, TWPS = 0 => prescaler = 1 */
   
   TWSR = 0;                         /* no prescaler */
   TWBR = ((F_CPU/SCL_CLOCK)-16)/2;  /* must be > 10 for stable operation */
-}/* i2c_init */
+}/* I2C_Init */
 
 
 /*************************************************************************	
   Issues a start condition and sends address and transfer direction.
   return 0 = device accessible, 1= failed to access device
 *************************************************************************/
-unsigned char i2c_start(unsigned char address)
+unsigned char I2C_Start(unsigned char address)
 {
     uint8_t   twst;
 
@@ -64,7 +64,7 @@ unsigned char i2c_start(unsigned char address)
 
 	return 0;
 
-}/* i2c_start */
+}/* I2C_Start */
 
 
 /*************************************************************************
@@ -73,7 +73,7 @@ unsigned char i2c_start(unsigned char address)
  
  Input:   address and transfer direction of I2C device
 *************************************************************************/
-void i2c_start_wait(unsigned char address)
+void I2C_Start_wait(unsigned char address)
 {
     uint8_t   twst;
 
@@ -113,7 +113,7 @@ void i2c_start_wait(unsigned char address)
     	break;
      }
 
-}/* i2c_start_wait */
+}/* I2C_Start_wait */
 
 
 /*************************************************************************
@@ -126,7 +126,7 @@ void i2c_start_wait(unsigned char address)
 *************************************************************************/
 unsigned char i2c_rep_start(unsigned char address)
 {
-    return i2c_start( address );
+    return I2C_Start( address );
 
 }/* i2c_rep_start */
 
@@ -134,7 +134,7 @@ unsigned char i2c_rep_start(unsigned char address)
 /*************************************************************************
  Terminates the data transfer and releases the I2C bus
 *************************************************************************/
-void i2c_stop(void)
+void I2C_Stop(void)
 {
     /* send stop condition */
 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
@@ -142,7 +142,7 @@ void i2c_stop(void)
 	// wait until stop condition is executed and bus released
 	while(TWCR & (1<<TWSTO));
 
-}/* i2c_stop */
+}/* I2C_Stop */
 
 
 /*************************************************************************
@@ -152,7 +152,7 @@ void i2c_stop(void)
   Return:   0 write successful 
             1 write failed
 *************************************************************************/
-unsigned char i2c_write( unsigned char data )
+unsigned char I2C_Write( unsigned char data )
 {	
     uint8_t   twst;
     
@@ -168,7 +168,7 @@ unsigned char i2c_write( unsigned char data )
 	if( twst != TW_MT_DATA_ACK) return 1;
 	return 0;
 
-}/* i2c_write */
+}/* I2C_Write */
 
 
 /*************************************************************************
