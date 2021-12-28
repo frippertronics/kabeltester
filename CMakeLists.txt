@@ -70,6 +70,7 @@ add_subdirectory(serial)
 add_subdirectory(interrupt)
 add_subdirectory(tester)
 add_subdirectory(twi)
+add_subdirectory(display)
 
 # Executable
 add_subdirectory(src)
