@@ -53,6 +53,6 @@ void SERIAL_SendMessage(char* pString, uint8_t string_len)
 void SERIAL_SendMessageWithInteger(char* pString, uint8_t string_len, int integer)
 {
     SERIAL_SendMessage(pString, string_len);
-    itoa(integer, pString, 10);
+    snprintf(pString, string_len, "%d", integer);
     SERIAL_SendMessage(pString, string_len);
 }

@@ -53,11 +53,13 @@ static void GPIO_InitOutputPins(void)
     }
 
     // TWI interface with pull-ups
+    /*
     for(int i = 0; i < NUM_TWI_PINS; i++)
     {
         GPIO_InitPin(TWI_PINS[i].ddr, TWI_PINS[i].number, OUTPUT);
         GPIO_SetPin(TWI_PINS[i].port, TWI_PINS[i].number);
     }
+    */
 
     // Blinking LED for sanity check
     GPIO_InitPin(&DDRB, PINB7, OUTPUT);

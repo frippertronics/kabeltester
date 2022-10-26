@@ -1,10 +1,21 @@
 cmake_minimum_required(VERSION 3.20)
 
-# Use AVR GCC toolchain
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_CXX_COMPILER avr-g++)
-set(CMAKE_C_COMPILER avr-gcc)
-set(CMAKE_ASM_COMPILER avr-gcc)
+set(TARGET_GROUP test CACHE STRING "Group to build")
+
+if(TARGET_GROUP STREQUAL production)
+    # Use AVR GCC toolchain
+    set(CMAKE_SYSTEM_NAME Generic)
+    set(CMAKE_CXX_COMPILER avr-g++)
+    set(CMAKE_C_COMPILER avr-gcc)
+    set(CMAKE_ASM_COMPILER avr-gcc)
+elseif(TARGET_GROUP STREQUAL test)
+    # Use default GCC on the OS
+    set(CMAKE_CXX_COMPILER clang++)
+    set(CMAKE_C_COMPILER clang)
+    set(CMAKE_ASM_COMPILER clang)
+else()
+    message(FATAL_ERROR "Please specify either production or test")
+endif()
 
 # Project name
 project("Kabeltester")
@@ -40,29 +51,36 @@ add_definitions(
 # mmcu MUST be passed to bot the compiler and linker, this handle the linker
 set(CMAKE_EXE_LINKER_FLAGS -mmcu=${MCU})
 
-add_compile_options(
-    -mmcu=${MCU} # MCU
-    -std=gnu99 # C99 standard
-    -Os # optimize
-    -Wall # enable warnings
-    -Wno-main
-    -Wundef
-    -pedantic
-    -Wstrict-prototypes
-    -Werror
-    -Wfatal-errors
-    -Wl,--relax,--gc-sections
-    -g
-    -gdwarf-2
-    -funsigned-char # a few optimizations
-    -funsigned-bitfields
-    -fpack-struct
-    -fshort-enums
-    -ffunction-sections
-    -fdata-sections
-    -fno-split-wide-types
-    -fno-tree-scev-cprop
-)
+if(TARGET_GROUP STREQUAL production)
+    add_compile_options(
+        -mmcu=${MCU} # MCU
+        -std=gnu99 # C99 standard
+        -Os # optimize
+        -Wall # enable warnings
+        -Wno-main
+        -Wundef
+        -pedantic
+        -Wstrict-prototypes
+        -Werror
+        -Wfatal-errors
+        -Wl,--relax,--gc-sections
+        -g
+        -gdwarf-2
+        -funsigned-char # a few optimizations
+        -funsigned-bitfields
+        -fpack-struct
+        -fshort-enums
+        -ffunction-sections
+        -fdata-sections
+        -fno-split-wide-types
+        -fno-tree-scev-cprop
+    )
+elseif(TARGET_GROUP STREQUAL test)
+    add_compile_options(
+        -g
+    )
+    include_directories(include/host_compatibility)
+endif()
 
 # Libraries
 add_subdirectory(gpio)
@@ -71,8 +89,16 @@ add_subdirectory(interrupt)
 add_subdirectory(tester)
 #add_subdirectory(twi)
 
-# Executable
-add_subdirectory(src)
-
+if(TARGET_GROUP STREQUAL production)
+    # Executable
+    add_subdirectory(src)
+elseif(TARGET_GROUP STREQUAL test)
+    # Tests
+    include(CTest)
+    add_subdirectory(extern)
+    add_subdirectory(tests)
+else()
+    message(FATAL_ERROR "Please specify either production or test")
+endif()
 # Clean extra files
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PRODUCT_NAME}")
