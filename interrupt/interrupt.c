@@ -1,5 +1,4 @@
-#include <avr/io.h>
-#include <avr/interrupt.h>
+#include "hardware/hal.h"
 
 #include "kabeltester/interrupt.h"
 #include "kabeltester/serial.h"

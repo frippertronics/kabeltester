@@ -78,8 +78,8 @@ if(TARGET_GROUP STREQUAL production)
 elseif(TARGET_GROUP STREQUAL test)
     add_compile_options(
         -g
+        -DTEST
     )
-    include_directories(include/host_compatibility)
 endif()
 
 # Libraries
@@ -96,6 +96,7 @@ elseif(TARGET_GROUP STREQUAL test)
     # Tests
     include(CTest)
     add_subdirectory(extern)
+    add_subdirectory(hardware)
     add_subdirectory(tests)
 else()
     message(FATAL_ERROR "Please specify either production or test")

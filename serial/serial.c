@@ -1,7 +1,7 @@
-#include <avr/io.h>
+#include "hardware/hal.h"
+#include "hardware/util.h"
+
 #include <string.h>
-#include <util/delay.h>
-#include <stdlib.h>
 
 #include "kabeltester/serial.h"
 

@@ -3,7 +3,7 @@
 #include "kabeltester/serial.h"
 #include "kabeltester/tester.h"
 
-#include <util/delay.h>
+#include "hardware/util.h"
 
 static void init(void)
 {

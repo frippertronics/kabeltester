@@ -4,6 +4,11 @@
         "*.scons": "python",
         "gpio.h": "c",
         "gpio_pins.h": "c",
-        "serial.h": "c"
+        "serial.h": "c",
+        "io.h": "c",
+        "string.h": "c",
+        "hal.h": "c",
+        "interrupt.h": "c",
+        "util.h": "c"
     }
 }

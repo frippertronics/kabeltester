@@ -1,7 +1,7 @@
 #ifndef GPIO_PINS_H
 #define GPIO_PINS_H
 
-#include <avr/io.h>
+#include "hardware/hal.h"
 
 #include "kabeltester/gpio.h"
 //#include "kabeltester/twi.h"
@@ -14,7 +14,6 @@
 #define DDR_F_PTR (&DDRF)
 #define DDR_G_PTR (&DDRG)
 #define DDR_H_PTR (&DDRH)
-#define DDR_I_PTR (&DDRI)
 #define DDR_J_PTR (&DDRJ)
 #define DDR_K_PTR (&DDRK)
 #define DDR_L_PTR (&DDRL)

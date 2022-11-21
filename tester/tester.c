@@ -2,7 +2,8 @@
 #include "kabeltester/gpio.h"
 #include "kabeltester/serial.h"
 
-#include <util/delay.h>
+#include "hardware/util.h"
+
 #include <stdlib.h>
 #include <string.h>
 

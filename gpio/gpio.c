@@ -1,4 +1,4 @@
-#include <avr/io.h>
+#include "hardware/hal.h"
 
 #include "kabeltester/gpio.h"
 #include "hardware/gpio_pins.h"

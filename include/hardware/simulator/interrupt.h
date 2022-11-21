@@ -1,9 +1,9 @@
-#ifndef HOST_INTERRUPT_H
-#define HOST_INTERRUPT_H
+#ifndef INTERRUPT_H
+#define INTERRUPT_H
 
 #define ISR(vector, ...)            \
     void vector (void)
 
 static inline void sei(void) {};
 
-#endif //HOST_INTERRUPT_H
+#endif //INTERRUPT_H
